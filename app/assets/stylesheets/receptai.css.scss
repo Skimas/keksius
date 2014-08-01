@@ -1,0 +1,65 @@
+// Place all the styles related to the receptai controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body{
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 1.7;
+	background-color:  	#F0F0F0 ;
+}
+
+h1 {
+	color:#F0F0F0;
+}
+
+.carousel-caption{
+	z-index: 10;
+}
+.carousel-inner > .item > img{
+	position: absolute;
+	top: 50px;
+	left: 0;
+	min-width: 100%;
+	height: auto;
+}
+.carousel-inner > .item {
+	height: 500px;
+}
+
+.intro-block{
+	background: url(../assets/purpalt.png) repeat;
+	padding: 100px 15px 60px 0px;
+	color: #fff ;
+}
+.text-muted {
+	color: #e9e6df;
+	font-weight: 100;
+}
+
+.tpad {
+	padding-top: 20px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.padded{
+	padding: 100px 20px 20px 100px;
+}
+
+.ftr {
+	background: url(../assets/purpalt.png) repeat;
+	padding: 80px 0 60px 0;
+}
+
+.ftr address, .ftr a, .ftr p {
+	color: #fff;
+}
+.ft_space{
+	padding: 0 10px;
+}
+@media(min-width: 768px){
+	.carousel-inner > .item {
+	height: 800px;
+}
+}

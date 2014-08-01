@@ -5,10 +5,25 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <style>
+      html, body {
+       	   height: 1000px;
+       }
+   </style>
 </head>
 <body>
 
 <%= yield %>
 
+
+
+    <script>
+    $(function () {
+    	$('.carousel').carousel({
+    		interval: 4000
+    	})
+    })
+    </script>
 </body>
 </html>
