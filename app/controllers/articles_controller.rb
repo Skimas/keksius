@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
 
+	before_action :authenticate_user!, except: [:index, :show]
+
 	def new
 	end
 
@@ -20,6 +22,6 @@ class ArticlesController < ApplicationController
 
 	private
 	  def article_params
-	  	params.require(:article).permit(:title, :text, :porcijos)
+	  	params.require(:article).permit(:title, :text, :porcijos, :bootsy_image_gallery_id)
 	  end
 end

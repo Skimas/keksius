@@ -12,7 +12,14 @@
     	</div>
     	<div class="navbar-collapse collapse">
     	   <ul class="nav navbar-nav">
-               <li class="active"><a href="receptai.html">Receptai</a></li>
+               <li class="active"><%= link_to "Receptai", articles_path %></li>
+
+               <% if user_signed_in? %>
+                  <%= link_to "Naujas receptas", new_article_path, class: "navbar-brand" %>
+                  <%= link_to "Atsijungti", destroy_user_session_path, method: :delete, class: "navbar-brand" %> 
+                <% else %>
+                  <%= link_to "Prisijungti", new_user_session_path, class: "navbar-brand" %>
+                <% end %>
            </ul>
     	   </div>
 </nav>
@@ -42,59 +49,37 @@
           <div class="col-sm-8 blog">
 
                <% @articles.each do |article| %>
-               <%= link_to article.title, article_path(article) %>
-               <%= article.title %>
-               <%= article.text %>
+
+               <section>
+               <div align="center">
+
+               <h1><%= link_to article.title, article_path(article) %></h1>
+               </div>
+               <br>
+               <p><span class="glyphicon glyphicon-time"></span> Paskelbta: <%= article.created_at.year%> -
+                                                                            <%= article.created_at.month%> -
+                                                                            <%= article.created_at.day%>, 
+                                                                            <%= article.created_at.hour%> :
+                                                                            <%= article.created_at.min%> </p>
+               <p><span class="glyphicon glyphicon-heart"></span> Porcijos: <%= article.porcijos %> </p>
+               <p><span class="glyphicon glyphicon-book"></span> Komentarai</p>
+               <br>
+
+               <div class="img-responsive">
+
+               <%= raw article.text %>
+
+               </div>
+            
+               <br>
+               <br>
+               <%= link_to "Skaityti daugiau &raquo;", article_path(article), class: "btn btn-primary" %>
+               </section>
+               <hr>
+               <br>
+
                <% end %>
-
-
-               <section>
-               <div align="center">
-               <h1><a href="skaityti.html">Paprasti iškylos keksiukai su varške ir juodaisiais serbentais</a></h1></div>
-               <br>
-               <p><span class="glyphicon glyphicon-time"></span> Paskelbta: 2014-07-31, 11:00 </p>
-               <p><span class="glyphicon glyphicon-heart"></span> Porcijos: 13 keksiukų </p>
-               <p><span class="glyphicon glyphicon-book"></span> Komentarai(2)</p>
-               <br>
-               <p>Vasara – uogų metas, tad niekur toli nuo jų nepasislėpsi. Kiekviename kieme sirpsta bent po vieną krūmą šių puikių uogyčių - serbentų. Todėl nutariau pasidalinti šiuo puikiu receptu su Jumis.</p>
-               <img src="/assets/serbentai.jpg" class="img-responsive">
-               <br>
-               <a class="btn btn-primary" href="skaityti.html">Skaityti daugiau &raquo;</a>
-               </section>
-               <hr>
-               <br>
-               <section>
-               <div align="center">
-               <h1><a href="skaityti1.html">Trapūs „Kinder Bueno“ keksiukai su šokoladiniu - riešutiniu maskarponės kremu</a></h1>
-               </div>
-               <br>
-               <p><span class="glyphicon glyphicon-time"></span> Paskelbta: 2014-07-24, 08:00 </p>
-               <p><span class="glyphicon glyphicon-heart"></span> Porcijos: 22 keksiukai </p>
-               <p><span class="glyphicon glyphicon-book"></span> Komentarai(5)</p>
-               <br>
-               <p>,,Kinder Bueno“ visų pirma turi būti traškus (keksiuko atveju šią savybę pakeičia trapumas), kreminis (taigi, be kremo čia tikrai neapsieisim), turi jaustis pieno, šokolado ir riešutų skonis. Toks yra ,,Kinder Bueno" keksiukas.</p>
-               <img src="/assets/bueno.jpg" class="img-responsive">
-               <br>
-               <a class="btn btn-primary" href="skaityti1.html">Skaityti daugiau &raquo;</a>
-               </section>
-               <hr>
-               <br>
-               <section>
-               <div align="center">
-               <h1><a href="skaityti2.html">Džiovintų slyvų keksiukai su migdolais, kava ir šokoladiniu kremu</a></h1>
-               </div>
-               <br>
-               <p><span class="glyphicon glyphicon-time"></span> Paskelbta: 2014-07-18, 11:26 </p>
-               <p><span class="glyphicon glyphicon-heart"></span> Porcijos: 16 keksiukų </p>
-               <p><span class="glyphicon glyphicon-book"></span> Komentarai(3)</p>
-               <br>
-               <p>Šį kartą šis tas ypač įdomaus – turtingi džiovintų slyvų keksiukai, su šokoladu, migdolais, kava ir šokoladiniu kremu. Tiesiog visa skonių puokštė!</p>
-               <img src="/assets/sudas.jpg" class="img-responsive">
-               <br>
-               <a class="btn btn-primary" href="skaityti2.html">Skaityti daugiau &raquo;</a>
-               </section>
-               <br>
-               <br>
+               
                
                <ul class="pagination">
                    <li><a href="#">&laquo;</a></li>
