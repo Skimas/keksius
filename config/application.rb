@@ -23,6 +23,8 @@ module Keksius
 
     config.assets.precompile.shift
 
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+
 config.assets.precompile.push(Proc.new do |path|
   File.extname(path).in? [
     '.html', '.erb', '.haml',                 # Templates
