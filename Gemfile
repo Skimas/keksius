@@ -20,8 +20,6 @@ gem 'devise', '~> 3.2.4'
 
 gem 'bootsy'
 
-gem 'sprockets', '~> 2.12.1'
-
 gem 'autoprefixer-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
