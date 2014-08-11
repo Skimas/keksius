@@ -1,20 +1,104 @@
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
-<p>
-  <strong>Porcijos</strong>
-  <%= @article.porcijos %>
-</p>
-<p>
-  <%= @article.created_at.year%> -
-  <%= @article.created_at.month%> -
-  <%= @article.created_at.day%>, 
-  <%= @article.created_at.hour%> :
-  <%= @article.created_at.min%>
-</p>
+     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <%= link_to "Pagrindinis", root_path, class: "navbar-brand" %>
+      </div>
+      <div class="navbar-collapse collapse">
+         <ul class="nav navbar-nav">
+                <li class="active"><%= link_to "Receptai", articles_path %></li>
+
+               <% if user_signed_in? %>
+                  <%= link_to "Naujas receptas", new_article_path, class: "navbar-brand" %>
+                  <%= link_to "Atsijungti", destroy_user_session_path, method: :delete, class: "navbar-brand" %> 
+                <% else %>
+                  <%= link_to "Prisijungti", new_user_session_path, class: "navbar-brand" %>
+                <% end %>
+           </ul>
+         </div>
+</nav>
+
+<!-- End Navigation -->
+    
+
+<div class="container padded">
+     <div class="row">
+          <div class="col-sm-8 blog">
+
+
+               <section>
+               <div align="center">
+               <h1><%=  link_to @article.title, article_path(@article) %></h1></div>
+               <br>
+               <p><span class="glyphicon glyphicon-time"></span> Paskelbta: <%= @article.created_at.year%> -
+                                                                            <%= @article.created_at.month%> -
+                                                                            <%= @article.created_at.day%>, 
+                                                                            <%= @article.created_at.hour%> :
+                                                                            <%= @article.created_at.min%> </p>
+               <p><span class="glyphicon glyphicon-heart"></span> Porcijos: <%= @article.porcijos %> </p>
+               <p><span class="glyphicon glyphicon-book"></span> Komentarai</p>
+               <br>
+               <p>Vasara – uogų metas, tad niekur toli nuo jų nepasislėpsi. Kiekviename kieme sirpsta bent po vieną krūmą šių puikių uogyčių - serbentų. Todėl nutariau pasidalinti šiuo puikiu receptu su Jumis.</p>
+               
+               <div class="my-text-special-style">
+
+               <%= raw @article.text %>
+
+               </div>
+
+               </section>
+        
+          </div>
+          <div class="col-sm-4 sidebar">
+               <section>
+                   <div class="input-group input-group-lg tpad">
+                        <span class="input-group-addon glyphicon glyphicon-search"></span>
+                        <input type="text" class="form-control input-lg" placeholde="search">
+                        <span class="input-group-btn">
+                             <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                   </div>
+                </section>
+                <hr>
+                <section>
+                        <h3 class="tpad">Tagai</h3>
+                        <div class="list-group tpad">
+                            <a href="#" class="list-group-item active"><span class="badge">38</span>Visi tagai</a>
+                            <a href="#" class="list-group-item"><span class="badge">14</span>Šokoladiniai</a>
+                            <a href="#" class="list-group-item"><span class="badge">9</span>Citrininiai</a>
+                            <a href="#" class="list-group-item"><span class="badge">7</span>Mėtiniai</a>
+                            <a href="#" class="list-group-item"><span class="badge">5</span>Įdaras</a>
+                            <a href="#" class="list-group-item"><span class="badge">27</span>Glajus</a>
+                        </div>
+                        <hr>
+                </section>
+          </div>
+     </div>
+</div>
+<!-- End Page Content -->
+
+<div class="ftr">
+     <div class="container">
+          <div class="row">
+                   <div class="pull-left ft_space">
+               <!-- Quote go here -->
+                    <blockquote>
+                        <p>&ldquo; Labai geri receptai. Tinka net ir patiems išrankiausiems. &rdquo;
+                        </p>
+                        <small>
+                        Kornelija, <cite title="source title">Miami</cite>
+                        </small>
+                    </blockquote>
+                   </div>
+                   <div class="pull-right ft_space">
+                   <br>
+                   <br>
+                         <p>&copy; Keksiukai 2014</p>
+                         </div>
+          </div>
+    </div>
+</div>
