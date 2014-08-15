@@ -20,6 +20,11 @@ gem 'devise', '~> 3.2.4'
 
 gem 'bootsy'
 
+# Paginate gem
+gem 'will_paginate', '~> 3.0'
+
+gem 'will_paginate-bootstrap'
+
 gem 'autoprefixer-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
