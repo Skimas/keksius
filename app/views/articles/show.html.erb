@@ -32,7 +32,17 @@
 
                <section>
                <div align="center">
-               <h1><%=  link_to @article.title, article_path(@article) %></h1></div>
+               <h1><%=  link_to @article.title, article_path(@article) %></h1>
+
+                <% if user_signed_in? %>
+               <%= link_to 'Redaguoti', edit_article_path(@article) %> | 
+               <%= link_to 'Sunaikinti', article_path(@article),
+                    method: :delete, data: { confirm: 'Ar tikrai norite sunkainti si irasa?' } %>
+                    <br>
+               <% end %>
+
+               </div>
+
                <br>
                <p><span class="glyphicon glyphicon-time"></span> Paskelbta: <%= @article.created_at %></p>
                <p><span class="glyphicon glyphicon-heart"></span> Porcijos: <%= @article.porcijos %> </p>

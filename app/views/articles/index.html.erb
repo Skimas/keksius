@@ -57,7 +57,9 @@
                <h1><%= link_to article.title, article_path(article) %></h1>
 
                <% if user_signed_in? %>
-               <td><%= link_to 'Redaguoti', edit_article_path(article) %></td>
+               <%= link_to 'Redaguoti', edit_article_path(article) %> | 
+               <%= link_to 'Sunaikinti', article_path(article),
+                    method: :delete, data: { confirm: 'Ar tikrai norite sunkainti si irasa?' } %>
                <% end %>
 
                </div>
