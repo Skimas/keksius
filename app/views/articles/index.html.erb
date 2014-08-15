@@ -50,11 +50,16 @@
 
                <% @articles.each do |article| %>
 
-               
+
                <section>
                <div align="center">
 
                <h1><%= link_to article.title, article_path(article) %></h1>
+
+               <% if user_signed_in? %>
+               <td><%= link_to 'Redaguoti', edit_article_path(article) %></td>
+               <% end %>
+
                </div>
                <br>
                <p><span class="glyphicon glyphicon-time"></span> Paskelbta: <%= article.created_at %></p>
